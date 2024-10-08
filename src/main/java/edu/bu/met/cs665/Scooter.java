@@ -1,0 +1,26 @@
+package edu.bu.met.cs665;
+
+import org.apache.commons.lang3.RandomStringUtils;
+
+public class Scooter implements Driver{
+
+    String registrationNumber;
+
+    public Scooter() {
+        registrationNumber = RandomStringUtils.random(10);
+    }
+    @Override
+    public void updateSelf(DeliveryRequest deliveryRequest) {
+        deliveryRequest.setDriverRegisterNumber(this.registrationNumber);
+        if(deliveryRequest.getRequestDriverType() == DriverType.SCOOTER) {
+            beginToProcess(deliveryRequest);
+        }
+    }
+
+    public void beginToProcess(DeliveryRequest deliveryRequest) {
+        deliveryRequest.onTheWay();
+        deliveryRequest.deliveryLogs.add("Scooter Driver begin to deal with order!");
+        deliveryRequest.delivered();
+        deliveryRequest.deliveryLogs.add("The request has been finished");
+    }
+}
