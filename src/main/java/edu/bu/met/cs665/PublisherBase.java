@@ -8,5 +8,7 @@ public interface PublisherBase {
 
     void unsubscribe(String name);
 
+    void unsubscribeAll();
+
     void notifySubscribers(DeliveryRequest deliveryRequest);
 }

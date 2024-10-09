@@ -7,6 +7,7 @@ public class DriversIterator implements Iterator {
     int index = 0;
 
     public DriversIterator(List<Driver> drivers) {
+        index = 0;
         this.drivers = drivers;
     }
     @Override
@@ -20,7 +21,6 @@ public class DriversIterator implements Iterator {
 
     @Override
     public Object next() {
-        index ++;
-        return drivers.get(index);
+        return drivers.get(index++);
     }
 }

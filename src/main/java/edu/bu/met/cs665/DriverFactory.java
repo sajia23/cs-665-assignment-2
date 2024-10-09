@@ -1,7 +1,7 @@
 package edu.bu.met.cs665;
 
 public class DriverFactory {
-    public Driver produceDriver(DriverType driverType) {
+    public static Driver produceDriver(DriverType driverType) {
         switch(driverType) {
             case CAR:
                 return new Car();

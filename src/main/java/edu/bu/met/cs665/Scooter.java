@@ -7,12 +7,12 @@ public class Scooter implements Driver{
     String registrationNumber;
 
     public Scooter() {
-        registrationNumber = RandomStringUtils.random(10);
+        registrationNumber = RandomStringUtils.random(10, true, false);
     }
     @Override
     public void updateSelf(DeliveryRequest deliveryRequest) {
-        deliveryRequest.setDriverRegisterNumber(this.registrationNumber);
         if(deliveryRequest.getRequestDriverType() == DriverType.SCOOTER) {
+            deliveryRequest.setDriverRegisterNumber(this.registrationNumber);
             beginToProcess(deliveryRequest);
         }
     }
@@ -22,5 +22,15 @@ public class Scooter implements Driver{
         deliveryRequest.deliveryLogs.add("Scooter Driver begin to deal with order!");
         deliveryRequest.delivered();
         deliveryRequest.deliveryLogs.add("The request has been finished");
+    }
+
+    @Override
+    public DriverType getDriverType() {
+        return DriverType.SCOOTER;
+    }
+
+    @Override
+    public String getRegistrationNumber() {
+        return registrationNumber;
     }
 }

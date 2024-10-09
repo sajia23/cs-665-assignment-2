@@ -13,7 +13,7 @@ public class DeliveryRequest {
     String customerAddress;
     String customerPhone;
     String driverRegisterNumber;
-    List<String> items;
+    String items;
     DriverType requestDriverType;
 
     List<String> deliveryLogs;
@@ -33,6 +33,10 @@ public class DeliveryRequest {
         this.broadcastState = new BroadcastState(this);
         this.state = toDoState;
         this.deliveryLogs = new ArrayList<>();
+    }
+
+    public List<String> getDeliveryLogs() {
+        return deliveryLogs;
     }
 
     public void setCustomerName(String customerName) {
@@ -83,7 +87,7 @@ public class DeliveryRequest {
         this.customerPhone = customerPhone;
     }
 
-    public void setItems(List<String> items) {
+    public void setItems(String items) {
         this.items = items;
     }
 
@@ -103,7 +107,7 @@ public class DeliveryRequest {
         return customerPhone;
     }
 
-    public List<String> getItems() {
+    public String getItems() {
         return items;
     }
 

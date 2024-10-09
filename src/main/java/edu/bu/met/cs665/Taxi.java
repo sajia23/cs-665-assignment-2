@@ -10,7 +10,7 @@ public class Taxi implements Driver{
     String registrationNumber;
 
     public Taxi() {
-        registrationNumber = RandomStringUtils.random(10);
+        registrationNumber = RandomStringUtils.random(10, true, false);
     }
     @Override
     public void updateSelf(DeliveryRequest deliveryRequest) {
@@ -25,5 +25,15 @@ public class Taxi implements Driver{
         deliveryRequest.deliveryLogs.add("Taxi Driver begin to deal with order!");
         deliveryRequest.delivered();
         deliveryRequest.deliveryLogs.add("The request has been finished");
+    }
+
+    @Override
+    public DriverType getDriverType() {
+        return DriverType.TAXI;
+    }
+
+    @Override
+    public String getRegistrationNumber() {
+        return registrationNumber;
     }
 }

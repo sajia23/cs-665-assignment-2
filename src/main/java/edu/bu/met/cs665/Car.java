@@ -6,7 +6,7 @@ public class Car implements Driver{
     String registrationNumber;
 
     public Car() {
-        registrationNumber = RandomStringUtils.random(10);
+        registrationNumber = RandomStringUtils.random(10, true, false);
     }
     @Override
     public void updateSelf(DeliveryRequest deliveryRequest) {
@@ -22,5 +22,15 @@ public class Car implements Driver{
         deliveryRequest.deliveryLogs.add("Car Driver begin to deal with order!");
         deliveryRequest.delivered();
         deliveryRequest.deliveryLogs.add("The request has been finished");
+    }
+
+    @Override
+    public DriverType getDriverType() {
+        return DriverType.CAR;
+    }
+
+    @Override
+    public String getRegistrationNumber() {
+        return registrationNumber;
     }
 }

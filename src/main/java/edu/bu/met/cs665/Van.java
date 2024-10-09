@@ -7,7 +7,7 @@ public class Van implements Driver{
     String registrationNumber;
 
     public Van() {
-        registrationNumber = RandomStringUtils.random(10);
+        registrationNumber = RandomStringUtils.random(10, true, false);
     }
     @Override
     public void updateSelf(DeliveryRequest deliveryRequest) {
@@ -22,5 +22,15 @@ public class Van implements Driver{
         deliveryRequest.deliveryLogs.add("Van Driver begin to deal with order!");
         deliveryRequest.delivered();
         deliveryRequest.deliveryLogs.add("The request has been finished");
+    }
+
+    @Override
+    public DriverType getDriverType() {
+        return DriverType.VAN;
+    }
+
+    @Override
+    public String getRegistrationNumber() {
+        return registrationNumber;
     }
 }

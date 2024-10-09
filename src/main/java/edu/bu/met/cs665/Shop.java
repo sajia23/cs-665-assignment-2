@@ -1,20 +1,21 @@
 package edu.bu.met.cs665;
 
-public class NotificationSystem implements PublisherBase{
+public class Shop implements PublisherBase{
 
     private RegistedDrivers registedDrivers;
-    private static volatile NotificationSystem ns;
-    private NotificationSystem() {
+    private static volatile Shop ns;
+    private Shop() {
         registedDrivers = new RegistedDrivers();
     }
-    private static void getInstance() {
+    public static Shop getInstance() {
         if(ns == null) {
-            synchronized (NotificationSystem.class) {
+            synchronized (Shop.class) {
                 if(ns == null) {
-                    ns = new NotificationSystem();
+                    ns = new Shop();
                 }
             }
         }
+        return ns;
     }
     @Override
     public void subscribe(SubscriberBase o) {
@@ -27,8 +28,13 @@ public class NotificationSystem implements PublisherBase{
 
     }
 
+    @Override
     public void unsubscribeAll() {
         registedDrivers.clearAll();
+    }
+
+    public RegistedDrivers getRegistedDrivers() {
+        return registedDrivers;
     }
 
     public void placeTheOrder(DeliveryRequest deliveryRequest) {
@@ -45,7 +51,7 @@ public class NotificationSystem implements PublisherBase{
             driver.updateSelf(deliveryRequest);
         }
         if(deliveryRequest.getDriverRegisterNumber() == null) {
-            deliveryRequest.deliveryLogs.add("Begin to broadcast the request to drivers!");
+            deliveryRequest.deliveryLogs.add("No appropriate driver to do the job!");
         }
     }
 }
