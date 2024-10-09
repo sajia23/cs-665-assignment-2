@@ -25,7 +25,7 @@ public class TestCases {
         Shop shop = Shop.getInstance();
         shop.unsubscribeAll();
         for(int i = 0; i < DriverType.values().length; i ++) {
-            shop.getRegistedDrivers().registerDriver(DriverFactory.produceDriver(DriverType.values()[i]));
+            shop.subscribe(DriverFactory.produceDriver(DriverType.values()[i]));
         }
     }
 
@@ -33,7 +33,7 @@ public class TestCases {
         Shop shop = Shop.getInstance();
         shop.unsubscribeAll();
         for(int i = 0; i < driverTypes.length; i ++) {
-            shop.getRegistedDrivers().registerDriver(DriverFactory.produceDriver(driverTypes[i]));
+            shop.subscribe(DriverFactory.produceDriver(driverTypes[i]));
         }
     }
 

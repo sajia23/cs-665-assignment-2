@@ -1,17 +1,32 @@
+/**
+ * Name: Shaohua Yue
+ * Course: CS-665 Software Designs & Patterns
+ * Date: 10/08/2024
+ * File Name: Taxi.java
+ * Description: This class is responsible for the processing the request from shop.
+ */
 package edu.bu.met.cs665;
 
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.RandomUtils;
 
-import java.util.Iterator;
-
+/**
+ * This class is responsible for the processing the request from shop
+ */
 public class Taxi implements Driver{
 
     String registrationNumber;
 
+    /**
+     * Construction method
+     */
     public Taxi() {
         registrationNumber = RandomStringUtils.random(10, true, false);
     }
+
+    /**
+     * Decide if the driver is appropriate to the request.
+     * @Param deliveryRequest
+     */
     @Override
     public void updateSelf(DeliveryRequest deliveryRequest) {
         if(deliveryRequest.getRequestDriverType() == DriverType.TAXI) {
@@ -20,6 +35,9 @@ public class Taxi implements Driver{
         }
     }
 
+    /**
+     * Begin to process the request
+     */
     public void beginToProcess(DeliveryRequest deliveryRequest) {
         deliveryRequest.onTheWay();
         deliveryRequest.deliveryLogs.add("Taxi Driver begin to deal with order!");
@@ -27,11 +45,17 @@ public class Taxi implements Driver{
         deliveryRequest.deliveryLogs.add("The request has been finished");
     }
 
+    /**
+     * Return type of the driver.
+     */
     @Override
     public DriverType getDriverType() {
         return DriverType.TAXI;
     }
 
+    /**
+     * Return registration number of the driver.
+     */
     @Override
     public String getRegistrationNumber() {
         return registrationNumber;
