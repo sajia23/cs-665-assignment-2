@@ -7,7 +7,12 @@
 | Assignment # | 2                          |
 
 # Assignment Overview
-Please add a paragraph or two overviewing the objectives of the assignment.
+In this assignment, I am implementing a delivery system. It has the following functions:
+First, drivers with different types of transportation could register themselves into the system. Each driver has his own registration number.
+Second, each delivery request has four different states to present process.
+Third, I implement a driver factory to produce different drivers by request.
+After that, the system could use iterator to notify each driver to check if it is qualified to do the job.
+And the system is singleton.
 
 # GitHub Repository Link:
 https://github.com/sajia23/cs-665-assignment-2
@@ -19,11 +24,16 @@ For each assignment, please answer the following:
 
 - Explain the level of flexibility in your implementation, including how new object types can
 be easily added or removed in the future.
+- Answer:  If there are new types of drivers in the future, I can create a new class that inherits the driver interface. And add it to the factory. Also, register them in the driver type enum class so that we can use them in the system. And for the new state type, I can create a new class that inherits the state interface. And add new method to the interface to change business process. And each type of driver has different ways to do the job. we can edit them in each class. Because of iterator pattern, I don't need to care about details of drivers and traverse them easily.
 - Discuss the simplicity and understandability of your implementation, ensuring that it is
 easy for others to read and maintain.
+- Answer: In this part I developed the project using real rules. How the delivery request goes through the whole system. We just have to check the request to know what's going on. And the driver has to register in the system before taking the job. And system could notify every driver for a delivery request. And I use factory to produce drivers. Obviously, all above rules are easier to understand.
 - Describe how you have avoided duplicated code and why it is important.
+- Answer: I have developed driver interface, so that it will be convenient when I add new driver type in the future.
+  Also, I have developed enum class for driver type so that I could use it in all project and no need to duplicate it in other class.
 - If applicable, mention any design patterns you have used and explain why they were
 chosen.
+- Answer: I use singleton pattern for shop system, state pattern for tracking delivery status, iterator pattern for finding the right driver, factory pattern for producing drivers, observer pattern for notifying drivers, and strategy pattern for different drivers executing specific goals.
 
 
 # Maven Commands
